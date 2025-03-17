@@ -1,0 +1,72 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# React Native specific
+android/.gradle
+android/app/build/
+android/app/src/main/assets/index.android.bundle
+android/app/src/main/assets/index.android.bundle.map
+android/.idea/
+android/.settings/
+android/.cxx/
+android/local.properties
+android/app/google-services.json
+android/app/src/debug/
+android/app/src/release/
+ios/Pods/
+ios/build/
+ios/.idea/
+ios/.expo/
+ios/DerivedData/
+ios/ExpoKitApp.xcworkspace/
+ios/*.xcodeproj/project.xcworkspace/
+ios/*.xcodeproj/xcuserdata/
+ios/*.xcodeproj/xcshareddata/
+ios/*.xcodeproj/*.pbxuser
+ios/*.xcodeproj/*.mode1v3
+ios/*.xcodeproj/*.mode2v3
+ios/*.xcodeproj/*.perspectivev3
+
+# MongoDB Data
+/data/db/
+dump/
+
+# Windows-specific files
+Thumbs.db
+ehthumbs.db
+
+# Editor/IDE specific files
+.vscode/
+.idea/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Expo files (if using Expo for React Native)
+.expo/
+.expo-shared/
