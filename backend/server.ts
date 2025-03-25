@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
+import userRoutes from "./routes/userRoute"; 
 
 // Load environment variables
 dotenv.config();
@@ -13,6 +14,7 @@ app.use(express.json()); // Parse JSON data from requests
 app.use(cors({ origin: "http://localhost:3000" })); // Allow frontend requests
 
 // mount rounts
+app.use("/api/user", userRoutes);
 
 // MongoDB connection
 mongoose

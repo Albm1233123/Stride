@@ -1,9 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import User from '../models/usersModel';
+import User, { IUser } from '../models/usersModel';  // Correctly import User and IUser
 
 interface DecodedToken {
     id: string;
+}
+
+declare module 'express' {
+    interface Request {
+        user?: IUser;  // Declare 'user' property with IUser type
+    }
 }
 
 const protect = async (req: Request, res: Response, next: NextFunction): Promise<void> => {

@@ -1,9 +1,8 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 import bcrypt from 'bcryptjs';
-import { RequestHandler } from "express";
 
 // Define an interface for the User model
-interface IUser extends Document {
+export interface IUser extends Document {
     fullName: string;
     email: string;
     password: string;
@@ -15,14 +14,12 @@ const userSchema = new Schema ({
         type: String,
         required: true,
         trim: true,
-        // Only chars, and spaces
         match: [/^[a-zA-Z\s]+$/, 'Full name can only contain letters and spaces']
     },
     email: {
         type: String,
         required: true,
         unique: true,
-        // Ensures no duplicate emails
         match: [/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/, 'Please fill a valid email address']
     },
     password: {
@@ -45,6 +42,6 @@ userSchema.methods.matchPassword = async function(password: string) {
     return await bcrypt.compare(password, this.password);
 };
 
-// Export the model
-const User: Model<IUser> = mongoose.model<IUser>("User", userSchema);
+// Export the model as default
+const User = mongoose.model<IUser>("User", userSchema);
 export default User;

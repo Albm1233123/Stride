@@ -1,5 +1,5 @@
 // custom.d.ts
-
+import { Request } from 'express';
 import { User } from './models/usersModel'; 
 
 declare global {

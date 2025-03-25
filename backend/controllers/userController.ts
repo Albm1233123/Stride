@@ -1,4 +1,4 @@
-import User from '../models/usersModel';
+import User from "../models/usersModel";
 import jwt from 'jsonwebtoken';
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
@@ -18,26 +18,22 @@ interface RegisterRequestBody {
 // {} = Params, Body, Headers, and Query types
 const registerUser = async (req: Request<{}, {}, RegisterRequestBody>, res: Response): Promise<void> => {
     const { fullName, email, password } = req.body;
-
+    
     try {
         // Check if the user already exists
         const userExists = await User.findOne({ email });
         if (userExists) {
             res.status(400).json({ message: 'User already exists' });
-            return
+            return;
         }
 
-        // Hash password before storing
-        const hashedPassword = await bcrypt.hash(password, 10);
-                
-        // Create user with hashed password
+        // Create user with plain password
         const user = await User.create({
             fullName,
             email,
-            password: hashedPassword
+            password
         });
 
-        // If user is successfully created, send response
         if (user) {
             res.status(200).json({
                 _id: user._id,
@@ -53,6 +49,7 @@ const registerUser = async (req: Request<{}, {}, RegisterRequestBody>, res: Resp
         res.status(500).json({ message: "Internal Server Error" });
     }
 };
+
 
 // req body for register
 interface userRequestBody {

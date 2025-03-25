@@ -110,5 +110,9 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
     "typeRoots": ["./node_modules/@types"]
-  }
+  },
+  "include": [
+    "backend/**/*.ts",    // If all your TypeScript files are in the backend folder
+    "custom.d.ts"        // Explicitly include your express.d.ts file
+  ]
 }
